@@ -9,6 +9,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        observableWithCreate()
     }
 
     /**
@@ -16,25 +18,25 @@ class MainActivity : AppCompatActivity() {
      * onComplete() : 데이터 발행이 끝났음을 알리는 완료 이벤트를 Observer에 전달하여 onNext()를 더 호출하지 않음을 나타낸다.
      * onError() : 오류가 발생했음을 Observer에 전달한다.
      */
-    private fun observableWithSubscribe(){
-        val observable: Observable<String> = Observable.create { emitter ->
-            emitter.onNext("Hello")
-            emitter.onNext("rx")
-            emitter.onComplete()
-        }
-        observable.subscribe(System.out::println)
-
-//        val source = Observable.create { emitter: ObservableEmitter<String?> ->
+    private fun observableWithCreate(){
+//        val observable: Observable<String> = Observable.create { emitter ->
 //            emitter.onNext("Hello")
-//            emitter.onError(Throwable())
-//            emitter.onNext("Yena")
+//            emitter.onNext("rx")
+//            emitter.onComplete()
 //        }
-//        source.subscribe(
-//            { x: String? -> println(x) }
-//        ) { throwable: Throwable? ->
-//            println(
-//                "Good bye"
-//            )
-//        }
+//        observable.subscribe(System.out::println)
+
+        val source = Observable.create { emitter: ObservableEmitter<String?> ->
+            emitter.onNext("Hello")
+            emitter.onError(Throwable())
+            emitter.onNext("Yena")
+        }
+        source.subscribe(
+            { x: String? -> println(x) }
+        ) { throwable: Throwable? ->
+            println(
+                "Good bye"
+            )
+        }
     }
 }
