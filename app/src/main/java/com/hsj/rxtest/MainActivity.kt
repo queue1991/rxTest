@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableEmitter
+import io.reactivex.rxjava3.functions.Consumer
 
 /**
  * onNext() : 하나의 소스 Observable에서 Observer까지 한 번에 하나씩 순차적으로 데이터를 발행한다.
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        observableWithJust()
+        observableWithFromArray()
     }
 
 
@@ -52,6 +53,16 @@ class MainActivity : AppCompatActivity() {
      */
     private fun observableWithJust(){
         val observable : Observable<String> = Observable.just("Hello","just")
+        observable.subscribe(System.out::println)
+    }
+
+    /**
+     * 단일 데이터가 아닌경우
+     * fromXXX()함수
+     */
+    private fun observableWithFromArray(){
+        val itemArray = arrayOf("Morning", "Afternoon", "Evening")
+        val observable = Observable.fromArray(*itemArray)
         observable.subscribe(System.out::println)
     }
 }
