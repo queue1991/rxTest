@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        observableWithFromArray()
+        observableWithFromIterable()
     }
 
 
@@ -60,9 +60,19 @@ class MainActivity : AppCompatActivity() {
      * 단일 데이터가 아닌경우
      * fromXXX()함수
      */
-    private fun observableWithFromArray(){
+    private fun observableWithFromArray() {
         val itemArray = arrayOf("Morning", "Afternoon", "Evening")
         val observable = Observable.fromArray(*itemArray)
+        observable.subscribe(System.out::println)
+    }
+
+    /**
+     * 단일 데이터가 아닌경우
+     * fromXXX()함수
+     */
+    private fun observableWithFromIterable() {
+        val itemArray = mutableListOf("Alpha", "Beta", "Gamma")
+        val observable = Observable.fromArray(itemArray)
         observable.subscribe(System.out::println)
     }
 }
