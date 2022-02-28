@@ -1,5 +1,6 @@
-package com.hsj.rxtest.retrofit
+package com.hsj.rxtest.retrofit.interceptor
 
+import com.hsj.rxtest.retrofit.Headers
 import okhttp3.Interceptor
 import okhttp3.Response
 

@@ -1,19 +1,8 @@
 package com.hsj.rxtest.retrofit
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
-import android.media.ExifInterface
-import android.text.TextUtils
+import com.hsj.rxtest.retrofit.base.BaseProxy
 import io.reactivex.rxjava3.core.Single
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import org.json.JSONObject
-import retrofit2.Call
 import retrofit2.http.*
-import java.io.File
-import java.io.FileOutputStream
-import java.util.*
 
 
 object DeliveryApi : BaseProxy() {

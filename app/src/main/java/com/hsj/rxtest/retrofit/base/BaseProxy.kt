@@ -1,5 +1,7 @@
-package com.hsj.rxtest.retrofit
+package com.hsj.rxtest.retrofit.base
 
+import com.hsj.rxtest.retrofit.interceptor.AppInterceptor
+import com.hsj.rxtest.retrofit.interceptor.NetInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

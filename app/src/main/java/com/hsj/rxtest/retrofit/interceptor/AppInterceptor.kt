@@ -1,5 +1,6 @@
-package com.hsj.rxtest.retrofit
+package com.hsj.rxtest.retrofit.interceptor
 
+import com.hsj.rxtest.retrofit.Headers
 import okhttp3.Interceptor
 import okhttp3.MultipartBody
 import okhttp3.Request
@@ -20,7 +21,7 @@ abstract class AppInterceptor : Interceptor {
         }
         when (val body = chain.request().body()) {
             is MultipartBody -> builder.addHeader(
-                    Headers.CONTENT_TYPE, "multipart/form-data; boundary=${body.boundary()}"
+                Headers.CONTENT_TYPE, "multipart/form-data; boundary=${body.boundary()}"
             )
         }
         return chain.proceed(builder.build())

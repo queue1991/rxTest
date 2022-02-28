@@ -1,4 +1,4 @@
-package com.hsj.rxtest.retrofit
+package com.hsj.rxtest.retrofit.base
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
