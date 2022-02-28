@@ -1,10 +1,14 @@
 package com.hsj.rxtest
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.hsj.rxtest.retrofit.DeliveryApi
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableEmitter
-import io.reactivex.rxjava3.functions.Consumer
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
  * onNext() : 하나의 소스 Observable에서 Observer까지 한 번에 하나씩 순차적으로 데이터를 발행한다.
@@ -12,6 +16,8 @@ import io.reactivex.rxjava3.functions.Consumer
  * onError() : 오류가 발생했음을 Observer에 전달한다.
  */
 class MainActivity : AppCompatActivity() {
+    private val compositeDisposable = CompositeDisposable()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -74,5 +80,28 @@ class MainActivity : AppCompatActivity() {
         val itemArray = mutableListOf("Alpha", "Beta", "Gamma")
         val observable = Observable.fromArray(itemArray)
         observable.subscribe(System.out::println)
+    }
+
+    /**
+     * call retrofit Using Single
+     */
+    private fun callRetrofitUsingSingle(){
+        compositeDisposable.add(DeliveryApi.liftItems()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                it.run{
+                    it?.let{
+
+                    }
+
+                    it?.let{
+
+                    }
+                }
+            },{
+
+            })
+        )
     }
 }

@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+def RETROFIT_VERSION = "2.3.0"
+
 android {
     compileSdkVersion 31
 
@@ -45,4 +47,9 @@ dependencies {
     // rx
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.3'
+
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.squareup.okhttp3:okhttp:3.11.0"
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 }
